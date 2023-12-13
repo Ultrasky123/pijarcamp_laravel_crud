@@ -13,7 +13,8 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        return view('produk.index');
+        $produk = Produk::all();
+        return view('produk.index', ['produk' => $produk]);    
     }
 
     /**
@@ -38,7 +39,8 @@ class ProdukController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $produk = Produk::find($id);
+        return view('produk.tampilan', ['produk' => $produk]);
     }
 
     /**
@@ -46,7 +48,8 @@ class ProdukController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $produk = Produk::find($id);
+        return view('produk.ubah', ['produk' => $produk]);
     }
 
     /**
@@ -54,7 +57,9 @@ class ProdukController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $produk = Produk::find($id);
+        $produk->update($request->all());
+        return redirect()->route('produk.index')->with('success', 'Produk berhasil diubah');
     }
 
     /**
@@ -62,6 +67,8 @@ class ProdukController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $produk = Produk::find($id);
+        $produk->delete();
+        return redirect()->route('produk.index')->with('success', 'Produk berhasil dihapus');
     }
 }

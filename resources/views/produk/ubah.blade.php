@@ -1,27 +1,29 @@
 @extends('app')
  
 @section('content')
-    <h1 class="mb-0">Edit Product</h1>
+    <h1 class="mb-0">Edit Produk</h1>
     <hr />
-    <form action="{{ route('product.update', $product->id) }}" method="POST">
+    <form action="{{ route('produk.update', $produk->id) }}" method="POST">
+    @csrf
+    @method('PUT')
         <div class="row">
             <div class="col mb-3">
-                <label class="form-label">Title</label>
-                <input type="text" name="title" class="form-control" placeholder="Title" value="{{ $product->title }}" >
+                <label class="form-label">nama_produk</label>
+                <input type="text" name="nama_produk" class="form-control" placeholder="nama_produk" value="{{ $produk->nama_produk }}" >
             </div>
             <div class="col mb-3">
-                <label class="form-label">Price</label>
-                <input type="text" name="price" class="form-control" placeholder="Price" value="{{ $product->price }}" >
+                <label class="form-label">harga</label>
+                <input type="text" name="harga" class="form-control" placeholder="harga" value="{{ $produk->harga }}" >
             </div>
         </div>
         <div class="row">
             <div class="col mb-3">
-                <label class="form-label">Product Code</label>
-                <input type="text" name="product_code" class="form-control" placeholder="Product Code" value="{{ $product->product_code }}" >
+                <label class="form-label">keterangan</label>                 
+                    <input type="text" name="keterangan" class="form-control" placeholder="keterangan" value="{{ $produk->keterangan }}" >
             </div>
             <div class="col mb-3">
-                <label class="form-label">Description</label>
-                <textarea class="form-control" name="description" placeholder="Descriptoin" >{{ $product->description }}</textarea>
+                <label class="form-label">jumlah</label>
+                <input type="text" name="jumlah" class="form-control" placeholder="jumlah" value="{{ $produk->jumlah }}" >
             </div>
         </div>
         <div class="row">
